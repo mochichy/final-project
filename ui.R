@@ -1,9 +1,12 @@
 library(shiny)
 library(dplyr)
 library(ggplot2)
+library(plotly)
 
 data <- read.csv(file='StateNames.csv', header=TRUE, stringsAsFactors = FALSE)
 choices <- data %>% select(Name) %>% unique()
+c <- data %>% select(State) %>% unique
+
 
 shinyUI(navbarPage(
   tabPanel('Angela',
@@ -41,14 +44,28 @@ shinyUI(navbarPage(
              )
            )
   ),
+  
   tabPanel("Map",
-          
+          titlePanel('Map'),
            sidebarPanel(
              textInput("name", label = h3("Search the name"), value = "Mary"), 
              helpText("Note: If there is no such name, please try another name."),
              submitButton("Update")
            ),
            mainPanel(plotlyOutput('map'))
-           )
+           ),
+  
+  tabPanel("State Popularity",
+          titlePanel("State Popularity Top 5"),
+            sidebarLayout(
+             sidebarPanel(
+               selectInput('barplot1',
+                           label ='Select State to View Name Popularity',
+                           choices =c ,selected=1)
+             ),
+             # Show barplot of the generated distribution
+             mainPanel(
+               plotlyOutput('barplot')
+             )
   )
-)
+)))

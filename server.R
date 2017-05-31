@@ -1,6 +1,8 @@
 library(shiny)
 library(dplyr)
 library(ggplot2)
+library(plotly)
+
 
 data <- read.csv(file='StateNames.csv', header=TRUE, stringsAsFactors = FALSE)
 
@@ -23,5 +25,13 @@ shinyServer(function(input, output) {
       z = ~sum, text = ~State, locations = ~State, color = ~sum, colors = 'Reds') %>%
       colorbar(title = "count") %>%
       layout(title = "Count of name in each state",geo = g) 
+  })
+  
+  output$barplot <- renderPlotly({ 
+    new.data <- data %>% filter(State == input$barplot1)
+    new.data.plot <- distinct(new.data,Name,.keep_all=TRUE) 
+    new.data.plot <- new.data.plot %>% arrange(desc(Count)) %>% filter(row_number() <=5L)
+    graph <- plot_ly(new.data.plot,x=~Name,y=~Count,type="bar") %>%
+      layout(title = "Name Popularity by State",xaxis=list(title="Names"),yaxis=list(title="Popularity/Millions"))
   })
 })
