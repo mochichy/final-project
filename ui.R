@@ -8,7 +8,7 @@ choices <- data %>% select(Name) %>% unique()
 c <- data %>% select(State) %>% unique
 
 
-shinyUI(navbarPage(
+shinyUI(navbarPage('Baby Names',
 
   
   tabPanel('Line Chart',

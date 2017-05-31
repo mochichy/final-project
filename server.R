@@ -5,6 +5,8 @@ library(plotly)
 
 
 data <- read.csv(file='StateNames.csv', header=TRUE, stringsAsFactors = FALSE)
+source('./BuildLineChart.R')
+
 
 shinyServer(function(input, output) {
   
