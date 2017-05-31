@@ -10,15 +10,30 @@ c <- data %>% select(State) %>% unique
 
 shinyUI(navbarPage('Baby Names',
 
-  
-  tabPanel('Line Chart',
+  tabPanel('Information Page',
+           titlePanel("Introduction"),
+           sidebarLayout(
+             sidebarPanel(),
+             mainPanel(
+               h6("Episode IV", align = "center"),
+               h6("A NEW HOPE", align = "center"),
+               h5("It is a period of civil war.", align = "center"),
+               h4("Rebel spaceships, striking", align = "center"),
+               h3("from a hidden base, have won", align = "center"),
+               h2("their first victory against the", align = "center"),
+               h1("evil Galactic Empire.")
+             )
+           )
+           ),
+                   
+  tabPanel('Name with Different Spellings',
            titlePanel('Names'),
            # Create sidebar layout
            sidebarLayout(
              # Side panel for controls
              sidebarPanel(
                # Input to select variable to the chart
-               selectInput('var', label = 'Data to Chart', 
+               selectInput('var', label = 'names to chart', 
                            choices = list("Zoe, Zoey, Zoie" = 'z', "Eric, Erik, Erick" = 'e', 
                                           "Lucas, Lukas" = 'l', "Zachary, Zackary" = 'zz',
                                           "Nicholas, Nickolas, Nicolas, Nikolas" = 'n'))
@@ -31,7 +46,7 @@ shinyUI(navbarPage('Baby Names',
            )
   ),
   
-  tabPanel('Angela',
+  tabPanel('Baby Names by year',
            titlePanel("Trend of Baby Names"),
            sidebarLayout(
              sidebarPanel(
@@ -48,11 +63,11 @@ shinyUI(navbarPage('Baby Names',
            sidebarLayout(
              sidebarPanel(
                textInput("name", label = h3("Search the name"), value = "Mary"), 
-               helpText("Note: If there is no such name, please try another name."),
-               submitButton("Update")
+               helpText("Note: If there is no such name, please try another name.")
              ),
-             mainPanel(plotlyOutput('map'))
-           )
+             mainPanel(
+               plotlyOutput('map')
+             ))
   ),
   
   tabPanel("State Popularity",

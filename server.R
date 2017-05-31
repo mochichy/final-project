@@ -16,7 +16,7 @@ shinyServer(function(input, output) {
   })
   
   output$line <- renderPlotly({ 
-    return(BuildLineChart(data, input$var))
+    return (BuildLineChart(data, input$var))
   })
   
   output$map <- renderPlotly({

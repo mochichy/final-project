@@ -5,7 +5,6 @@ source('./BuildLineChart.R')
 
 data <- read.csv("../StateNames.csv")
 
-
 shinyServer(function(input, output) { 
   
   # Render a plotly object that returns your map
