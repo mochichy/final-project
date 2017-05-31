@@ -11,4 +11,8 @@ shinyServer(function(input, output) {
     return (ggplot(plot.data, aes(x=Year, y=Count)) + geom_point(color='darkblue'))
   })
   
+  output$line <- renderPlotly({ 
+    return(BuildLineChart(data, input$var))
+  })
+  
 })
