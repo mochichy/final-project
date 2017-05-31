@@ -9,27 +9,14 @@ c <- data %>% select(State) %>% unique
 
 
 shinyUI(navbarPage(
-  tabPanel('Angela',
-    titlePanel("Trend of Baby Names"),
-    sidebarLayout(
-    sidebarPanel(
-      selectInput("select", label = h3("Select name"), 
-                  choices = choices, 
-                  selected = 1))
-    ),
-    mainPanel(
-      plotOutput("babyNamesPlot")
-    )
-  ),
+
   
   tabPanel('Line Chart',
            titlePanel('Names'),
            # Create sidebar layout
            sidebarLayout(
-             
              # Side panel for controls
              sidebarPanel(
-               
                # Input to select variable to the chart
                selectInput('var', label = 'Data to Chart', 
                            choices = list("Zoe, Zoey, Zoie" = 'z', "Eric, Erik, Erick" = 'e', 
@@ -37,7 +24,6 @@ shinyUI(navbarPage(
                                           "Nicholas, Nickolas, Nicolas, Nikolas" = 'n'))
                
              ),
-             
              # display line chart
              mainPanel(
                plotlyOutput('line')
@@ -45,15 +31,29 @@ shinyUI(navbarPage(
            )
   ),
   
+  tabPanel('Angela',
+           titlePanel("Trend of Baby Names"),
+           sidebarLayout(
+             sidebarPanel(
+               selectInput("select", label = h3("Select name"), 
+                           choices = choices, 
+                           selected = 1)),
+             mainPanel(
+               plotOutput("babyNamesPlot")
+             ))
+  ),
+
   tabPanel("Map",
-          titlePanel('Map'),
-           sidebarPanel(
-             textInput("name", label = h3("Search the name"), value = "Mary"), 
-             helpText("Note: If there is no such name, please try another name."),
-             submitButton("Update")
-           ),
-           mainPanel(plotlyOutput('map'))
-           ),
+           titlePanel('Map'),
+           sidebarLayout(
+             sidebarPanel(
+               textInput("name", label = h3("Search the name"), value = "Mary"), 
+               helpText("Note: If there is no such name, please try another name."),
+               submitButton("Update")
+             ),
+             mainPanel(plotlyOutput('map'))
+           )
+  ),
   
   tabPanel("State Popularity",
           titlePanel("State Popularity Top 5"),
