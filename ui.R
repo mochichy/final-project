@@ -2,7 +2,6 @@ library(shiny)
 library(dplyr)
 library(ggplot2)
 
-setwd("~/Desktop/")
 data <- read.csv(file='StateNames.csv', header=TRUE, stringsAsFactors = FALSE)
 choices <- data %>% select(Name) %>% unique()
 
