@@ -21,13 +21,35 @@ shinyUI(navbarPage('Baby Names',
              sidebarPanel(),
              # show the information in main panel
              mainPanel(
-               h6("Episode IV", align = "center"),
-               h6("A NEW HOPE", align = "center"),
-               h5("It is a period of civil war.", align = "center"),
-               h4("Rebel spaceships, striking", align = "center"),
-               h3("from a hidden base, have won", align = "center"),
-               h2("their first victory against the", align = "center"),
-               h1("evil Galactic Empire.")
+               #img(src="baby_pic.jpg", height = 400, width = 400),
+               h1("Introduction"),
+               p("We will be using the “US Baby State Names” dataset released by Data.gov, 
+              which contains a lot of different baby names across different states in the US. 
+              In this dataset, only names with at least 5 babies born in the same year per state 
+              are included for privacy reasons, as mentioned on the website. "),
+               div("The original data set is obtained from (https://www.kaggle.com/kaggle/us-baby-names) "
+                   ,style="color:blue"),
+              p("Some possible audience will be parents who are deciding on a name for their 
+                new baby, people who are curious about the current trends in baby names
+                (like us!), and those who are interesting in gaining some interesting
+                insights on their names. "),
+              
+              h1("Questions That We Answer"),
+              p("What are the most popular names by state?"),
+              p("Does your name happen to be one of the popular names in a certain state in a specific year?"),
+              p("Do the popular names have similar spellings?"),
+              p("What is the trend of the name over year?"),
+              p("Does there seem to be an association between name popularity and location(East and West coast?"),
+              p("We have created 4 tabs to answer all the questions above. Please click in each tab to view more."),
+              
+              h1("Challenges that We Faced"),
+              p("Since there are 4 people working on this project together, there were conflicts when 
+                we try to push our individual changes back up to github. Resolving the conflicts is challenging,
+                however, we managed to overcome the challenge. It is also our first time working with tabs in 
+                Shiny, and we had a litttle trouble using the appropriate syntax. The baby-names dataset is fairly 
+                large, which contains up to millions of rows. We managed to create a test dataset which is a 
+                smaller subset of the baby-names dataset, and tested our code based on it. It is definitely more 
+                efficient and less time consuming.")
              )
            )
            ),
@@ -73,7 +95,7 @@ shinyUI(navbarPage('Baby Names',
   ),
   
   # Tab 4: The Choropleth map shows the count of name in each state
-  tabPanel("Map",
+  tabPanel("Map and Name Popularity",
            # title
            titlePanel('Map'),
            # Create sidebar layout
