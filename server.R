@@ -13,7 +13,7 @@ source('./BuildLineChart.R')
 
 shinyServer(function(input, output) {
   
-  # Render a plot object that returns the plot
+  # Render a plot object that returns the scatter plot
   output$babyNamesPlot <- renderPlot({
     # filter to get the data we want 
     plot.data <- data %>% filter(Name == input$select) %>% group_by(Year) %>% summarise(Count = sum(Count))
