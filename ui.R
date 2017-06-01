@@ -5,7 +5,9 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 
+#import the dataset
 data <- read.csv(file='StateNames.csv', header=TRUE, stringsAsFactors = FALSE)
+#list of data that will be used later in the code, Tab 3 and Tab 5
 choices <- data %>% select(Name) %>% unique()
 c <- data %>% select(State) %>% unique
 
@@ -14,11 +16,8 @@ shinyUI(navbarPage('Baby Names',
   
   # Tab 1: Information page
   tabPanel('Information Page',
-           # title
-           # Create sidebar layout
              # show the information in main panel
              mainPanel(
-               #img(src="baby_pic.jpg", height = 400, width = 400),
               h1("Introduction"),
               p("We will be using the “US Baby State Names” dataset released by Data.gov, 
               which contains a lot of different baby names across different states in the US. 
@@ -69,7 +68,11 @@ shinyUI(navbarPage('Baby Names',
              ),
              # display line chart
              mainPanel(
-               plotlyOutput('line')
+               plotlyOutput('line'),
+               h1("What is this graph about?"),
+               p("There are some names with different spelling! We chose a few example to show the trend of 
+                 each different spelling of the name over years.")
+               
              )
            )
   ),
@@ -105,12 +108,16 @@ shinyUI(navbarPage('Baby Names',
              sidebarPanel(
                # Search bar: type the name in the box to see the map
                textInput("name", label = h3("Search the name"), value = "Mary"), 
-               helpText("Note: Note: Type the name into the search box to see how many babies get that name in each state. 
+               helpText("Note: Type the name into the search box to see how many babies get that name in each state. 
                         If there is no such name you want to see, please try another one.")
              ),
              # display the map
              mainPanel(
-               plotlyOutput('map')
+               plotlyOutput('map'),
+               h1("What is this graph about?"),
+               p("This graph shows the number of a specific name in each state. With the color bar at the right of the graph 
+                 you can see that more people get the chosen name in the state, the color is darker."),
+               p("You can hover on each state to see the details.")
              ))
   ),
   
@@ -129,7 +136,11 @@ shinyUI(navbarPage('Baby Names',
              ),
              # Show barplot of the generated distribution
              mainPanel(
-               plotlyOutput('barplot')
+               plotlyOutput('barplot'),
+               h1("What is this graph about?"),
+               p("This graph shows the top 5 popular names and their counts, according to each 
+                 state. The x-axis shows the names, and the y-axis shows the counts(popularity)
+                 in Ks. You can hover on the barplot to view details.")
              )
   )
 )))

@@ -19,9 +19,8 @@ shinyServer(function(input, output) {
     plot.data <- data %>% 
                 filter(Name == input$select) %>% 
                 group_by(Year) %>% 
-                summarise(Count = sum(Count)) %>% 
-                layout(title = "Trend of Baby Names Over Time")
-    return (ggplot(plot.data, aes(x=Year, y=Count)) + geom_point(color='darkblue'))
+                summarise(Count = sum(Count))
+    return (ggplot(plot.data, aes(x=Year, y=Count)) + geom_point(color='darkblue') + labs(title = "Trend of Baby Names Over Time"))
   })
   
   # Render a plotly object that returns the line plot
