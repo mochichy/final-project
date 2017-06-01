@@ -22,14 +22,15 @@ shinyUI(navbarPage('Baby Names',
              # show the information in main panel
              mainPanel(
                #img(src="baby_pic.jpg", height = 400, width = 400),
-               h1("Introduction"),
-               p("We will be using the “US Baby State Names” dataset released by Data.gov, 
+              h1("Introduction"),
+              p("We will be using the “US Baby State Names” dataset released by Data.gov, 
               which contains a lot of different baby names across different states in the US. 
               In this dataset, only names with at least 5 babies born in the same year per state 
               are included for privacy reasons, as mentioned on the website. "),
-               div("The original data set is obtained from (https://www.kaggle.com/kaggle/us-baby-names) "
+              div("The original data set is obtained from (https://www.kaggle.com/kaggle/us-baby-names) "
                    ,style="color:blue"),
-              p("Some possible audience will be parents who are deciding on a name for their 
+              p("The dataset includes 6 columnss: Id, Name, Year, Gender, State and Count."),
+              p("Some possible target audience will be parents who are deciding on a name for their 
                 new baby, people who are curious about the current trends in baby names
                 (like us!), and those who are interesting in gaining some interesting
                 insights on their names. "),
