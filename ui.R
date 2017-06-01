@@ -77,7 +77,7 @@ shinyUI(navbarPage('Baby Names',
   # Tab 3: The trend of Baby names by year
   tabPanel('Baby Names by year',
            # title
-           titlePanel("Trend of Baby Names"),
+           titlePanel("Names"),
            # Create sidebar layout 
            sidebarLayout(
              # sidebar panel
