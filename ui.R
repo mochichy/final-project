@@ -88,7 +88,10 @@ shinyUI(navbarPage('Baby Names',
                            selected = 1)),
              # display the plot
              mainPanel(
-               plotOutput("babyNamesPlot")
+               plotOutput("babyNamesPlot"),
+               h1("What is this graph about?"),
+               p("This graph shows the changes in the count of a selected baby name over the years in the United States."),
+               p("The count in each year represents the total number of babies with the selected baby name across all states in the US.")
              ))
   ),
   
