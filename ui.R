@@ -15,10 +15,7 @@ shinyUI(navbarPage('Baby Names',
   # Tab 1: Information page
   tabPanel('Information Page',
            # title
-           titlePanel("Introduction"),
            # Create sidebar layout
-           sidebarLayout(
-             sidebarPanel(),
              # show the information in main panel
              mainPanel(
                #img(src="baby_pic.jpg", height = 400, width = 400),
@@ -51,7 +48,7 @@ shinyUI(navbarPage('Baby Names',
                 large, which contains up to millions of rows. We managed to create a test dataset which is a 
                 smaller subset of the baby-names dataset, and tested our code based on it. It is definitely more 
                 efficient and less time consuming.")
-             )
+             
            )
            ),
   
