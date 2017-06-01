@@ -1,3 +1,3 @@
 # info201 final project
 
-Angela Li Shou, Christy Lu, Connie He, Xian Wu
+Angela Li Shuo, Christy Lu, Connie He, Xian Wu
